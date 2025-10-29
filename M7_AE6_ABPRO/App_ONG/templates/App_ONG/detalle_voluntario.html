@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle Voluntarios{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Detalles Voluntarios</h2>
+    <p><strong>Id:</strong> {{ voluntario.id }}</p>
+    <p><strong>Nombre:</strong> {{ voluntario.nombre}}</p>
+    <p><strong>Email:</strong> {{voluntario.email}}</p>
+    <p><strong>Registro:</strong> {{voluntario.fecha_registro}}</p>
+    <p><strong>Teléfono:</strong> {{voluntario.telefono}}</p>
+    <p><strong>Eventos:</strong></p>
+        <ul>
+            {% for evento in voluntario.eventos.all %}
+               <li>{{ evento.titulo }}</li>
+            {% empty %}
+               <li>No tiene evento asociado.</li>
+         {% endfor %}
+        </ul>
+    
+    <a href="{% url 'lista' %}" class="btn btn-primary">Volver a la lista</a>
+    <a href="{% url 'actualizar_voluntario' voluntario.pk %}" class="btn btn-sm btn-warning">Actualizar</a>
+{% endblock %}

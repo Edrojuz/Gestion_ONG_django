@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle Evento{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Detalles evento</h2>
+    <p><strong>Id:</strong> {{ evento.id }}</p>
+    <p><strong>Titulo:</strong> {{ evento.titulo}}</p>
+    <p><strong>Descripcion:</strong> {{evento.descripcion}}</p>
+    <p><strong>Voluntarios:</strong></p>
+        <ul>
+            {% for voluntario in evento.voluntarios.all %}
+                <li>{{ voluntario.nombre }}</li>
+            {% empty %}
+                li>No hay voluntarios asociados a este evento.</li>
+         {% endfor %}
+        </ul>
+    
+    <a href="{% url 'lista' %}" class="btn btn-primary">Volver a la lista</a>
+</div>
+{% endblock %}

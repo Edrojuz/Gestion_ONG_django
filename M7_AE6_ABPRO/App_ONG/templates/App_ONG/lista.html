@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Registros{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Lista de Eventos</h2>
+    <a href="{% url 'crear_evento' %}" class="btn btn-primary mb-3">Agregar Evento</a>
+
+    {% if eventos %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for evento in eventos %}
+            <tr>
+                <td>{{ evento.titulo}}</td>
+                <td>{{ evento.fecha}}</td>
+                <td>
+                    <a href="{% url 'actualizar_evento' evento.pk %}" class="btn btn-sm btn-warning">Actualizar</a>
+                    <a href="{% url 'eliminar_evento' evento.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    <a href="{% url 'detalle_evento' evento.pk %}" class="btn btn-sm btn-primary">Detalle</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No hay Eventos registrados.</p>
+    {% endif %}
+</div>
+<div class="container mt-4">
+    <h2>Lista de Voluntarios</h2>
+    <a href="{% url 'crear_voluntario' %}" class="btn btn-primary mb-3">Agregar Voluntario</a>
+
+    {% if voluntarios %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>fecha del Registro</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for voluntario in voluntarios %}
+            <tr>
+                <td>{{ voluntario.nombre}}</td>
+                <td>{{ voluntario.fecha_registro}}</td>
+                <td>
+                    <a href="{% url 'actualizar_voluntario' voluntario.pk %}" class="btn btn-sm btn-warning">Actualizar</a>
+                    <a href="{% url 'eliminar_voluntario' voluntario.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    <a href="{% url 'detalle_voluntario' voluntario.pk %}" class="btn btn-sm btn-primary">Detalle</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No hay Voluntarios registrados.</p>
+    {% endif %}
+</div>
+<div class="text-center mx-auto">
+    <a href="{% url 'home' %}" class="btn btn-primary mt-3">Volver al Home</a>
+</div>
+{% endblock %}

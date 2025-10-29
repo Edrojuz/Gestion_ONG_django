@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Bienvenido a Registro ONG{% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <h1>¡Bienvenido a ONG!</h1>
+    <p>Tu ONG más cerca de tí.</p>
+    <a href="{% url 'crear_evento' %}" class="btn btn-primary mt-3">Crear Evento</a>
+    <a href="{% url 'crear_voluntario' %}" class="btn btn-primary mt-3">Crear Voluntario</a>
+    <a href="{% url 'lista' %}" class="btn btn-primary mt-3">Lista de Registros</a>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Voluntario{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Eliminar Voluntario</h2>
+    <p>¿Estás seguro de que deseas eliminar el voluntario <strong>{{ voluntario.nombre }}</strong>?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="{% url 'lista' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
