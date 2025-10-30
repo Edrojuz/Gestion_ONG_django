@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}Actualizar Evento{% endblock %}
 
@@ -7,7 +8,7 @@
     <h2>Actualizar Evento</h2>
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <button type="submit" class="btn btn-primary">Actualizar</button>
         <a href="{% url 'lista' %}" class="btn btn-secondary">Cancelar</a>
     </form>

@@ -6,6 +6,7 @@
 <div class="container mt-4">
     <h2>Detalles evento</h2>
     <p><strong>Id:</strong> {{ evento.id }}</p>
+    <p><strong>Fecha:</strong> {{ evento.fecha }}</p>
     <p><strong>Titulo:</strong> {{ evento.titulo}}</p>
     <p><strong>Descripcion:</strong> {{evento.descripcion}}</p>
     <p><strong>Voluntarios:</strong></p>
@@ -13,10 +14,10 @@
             {% for voluntario in evento.voluntarios.all %}
                 <li>{{ voluntario.nombre }}</li>
             {% empty %}
-                li>No hay voluntarios asociados a este evento.</li>
+                <li>No hay voluntarios asociados a este evento.</li>
          {% endfor %}
         </ul>
-    
+    <p><strong>Última modificación:</strong> {{evento.fecha_modificacion}}</p>
     <a href="{% url 'lista' %}" class="btn btn-primary">Volver a la lista</a>
 </div>
 {% endblock %}

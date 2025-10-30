@@ -1,5 +1,6 @@
 from django import forms
 from .models import Voluntario, Evento
+from datetime import date
 
 class VoluntarioForm(forms.ModelForm):
     class Meta:
@@ -14,9 +15,20 @@ class VoluntarioForm(forms.ModelForm):
 class EventoForm(forms.ModelForm):
     voluntarios = forms.ModelMultipleChoiceField(
     queryset=Voluntario.objects.all(),
-    widget=forms.CheckboxSelectMultiple  
+    widget=forms.CheckboxSelectMultiple,
+    required=False,
     )
 
     class Meta:
         model = Evento
-        fields = ['titulo', 'fecha', 'voluntarios']
+        fields = ['titulo', 'descripcion', 'fecha', 'voluntarios']
+        widgets = {'fecha': forms.DateInput(format='%Y-%m-%d', attrs={'type': 'date', 'class': 'form-control', 'min': date.today().isoformat(),})}
+        help_texts = {
+            'fecha': 'Seleccione la fecha del evento usando el calendario.',
+        }
+
+    def clean_fecha(self):
+        fecha = self.cleaned_data.get('fecha')
+        if fecha and fecha < date.today():
+            raise forms.ValidationError("La fecha del evento no puede ser anterior a hoy.")
+        return fecha

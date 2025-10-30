@@ -18,7 +18,7 @@
                <li>No tiene evento asociado.</li>
          {% endfor %}
         </ul>
-    
+    <p><strong>Última modificación:</strong> {{voluntario.fecha_actualizacion}}</p>
     <a href="{% url 'lista' %}" class="btn btn-primary">Volver a la lista</a>
     <a href="{% url 'actualizar_voluntario' voluntario.pk %}" class="btn btn-sm btn-warning">Actualizar</a>
 {% endblock %}

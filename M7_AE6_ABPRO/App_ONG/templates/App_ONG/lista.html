@@ -12,7 +12,7 @@
         <thead>
             <tr>
                 <th>Titulo</th>
-                <th>fecha</th>
+                <th>Fecha</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -34,6 +34,9 @@
         <p>No hay Eventos registrados.</p>
     {% endif %}
 </div>
+<div class="text-center mx-auto">
+    <a href="{% url 'home' %}" class="btn btn-primary mt-3">Volver al Home</a>
+</div>
 <div class="container mt-4">
     <h2>Lista de Voluntarios</h2>
     <a href="{% url 'crear_voluntario' %}" class="btn btn-primary mb-3">Agregar Voluntario</a>
@@ -43,7 +46,7 @@
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>fecha del Registro</th>
+                <th>Fecha del Registro</th>
                 <th>Acciones</th>
             </tr>
         </thead>
