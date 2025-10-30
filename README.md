@@ -76,6 +76,12 @@ Evento: Actividad de la ONG con voluntarios asociados.
 - Listar registros: /App_ONG/lista/
 - Actualizar o eliminar desde los botones de la lista.
 
+  ## 🧩 Mejoras Recientes
+
+## 🔹 Validación de Fechas en Eventos
+Se implementó una validación en el formulario `EventoForm` que **impide crear o actualizar eventos con fechas anteriores a la actual**.  
+Esto evita errores de planificación y mantiene la coherencia de los registros.
+
 ## Integrantes Grupo 3:
 - Patricia Vidal
 - Jasmin Salvador
